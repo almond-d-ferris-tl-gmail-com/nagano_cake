@@ -1,0 +1,22 @@
+<!--<h1>Admin::Items#show</h1>-->
+
+<h1>商品詳細</h1><!--表示したいものが一つだけの場合、each文は書けない-->
+
+<h2>商品名</h2>
+<p><%= @show_admin_item.name %></p>
+
+<h2>商品説明</h2>
+<p><%= @show_admin_item.introduction %></p>
+
+<h2>ジャンル</h2>
+<p><%= genre_path(genre_id) %></p>
+
+<h2>画像</h2>
+<% if @show_admin_item.image.attached? %>
+  <%= image_tag item.image, size: "300x300" %>
+<% else %>
+  <%= image_tag 'no_image', size: "300x300" %>
+<% end %>
+<%= f.submit '編集する', class: "btn btn-success" %>
+<!--%<= link_to "編集する", edit_admin_item_path(items.id.edit) %>-->
+<% end %>

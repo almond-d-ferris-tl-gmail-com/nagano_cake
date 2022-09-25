@@ -1,0 +1,26 @@
+<!--<h1>Admin::Items#new</h1>-->
+
+<h1>商品新規登録</h1>
+
+<%= form_with model: @@new_admin_item, url:'/items' do |item| %>
+
+  <h4>商品画像</h4>
+  <%= item.file_field :image, accept: "image/*" %>
+
+  <h4>商品名</h4>
+  <%= item.text_field :name %>
+
+  <h4>商品説明</h4>
+  <%= item.text_area :introduction %>
+
+  <h4>ジャンル</h4><!--エラー-->
+  <%= genre_path(genre_id) %>
+
+  <h4>税抜価格</h4><!--エラー-->
+  <%= price %>
+
+  <h4>販売ステータス</h4><!--エラー-->
+  <p><%= is_active %></p>
+
+  <%= item.submit '新規投稿', class: "btn btn-success" %>
+<% end %>

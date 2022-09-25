@@ -13,7 +13,14 @@ class DeviseCreateAdmins < ActiveRecord::Migration[6.1]
 
       ## Rememberable
       t.datetime :remember_created_at
-
+      
+      #追加→デフォルトで記述されているので不要
+      #t.integer  :id, null: false, increment :auto, index: true	#管理者ID
+      #t.string   :email	#メールアドレス
+      #t.string   :encrypted_password, null: false	#パスワード
+      #t.datetime :created_at, null: false, default:now	#作成日時
+      #t.datetime :updated_at, null: false, default:now	#更新日時
+      
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false
       # t.datetime :current_sign_in_at

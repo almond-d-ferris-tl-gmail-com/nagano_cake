@@ -14,6 +14,16 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       ## Rememberable
       t.datetime :remember_created_at
 
+      #追加 id→自動作成される,email,encrypted_password,created_atupdated_at→既に記述あり→不要
+      t.string   :last_name, null: false	#姓
+      t.string   :first_name, null: false	#名
+      t.string   :last_name_kana, null: false	#姓カナ
+      t.string   :first_name_kana, null: false	#名カナ
+      t.string   :postal_code, null: false	#郵便番号
+      t.string   :address, null: false	#住所
+      t.string   :telephone_number, null: false	#電話番号
+      t.boolean  :is_deleted, null: false, default: false	#退会ステータス
+      
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false
       # t.datetime :current_sign_in_at

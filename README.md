@@ -1,9 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+DMM WEBCAMPコンテンツ【システム設計】
+DMM WEBCAMPの学習コンテンツ[システム設計]の研修課題です。
 
-Things you may want to cover:
+使い方
+Ruby on railsファイルのため、PCのブラウザで実行できます。
 
 * Ruby version
 

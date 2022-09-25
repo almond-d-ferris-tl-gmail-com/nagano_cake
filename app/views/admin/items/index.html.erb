@@ -1,0 +1,34 @@
+<!--<h1>Admin::Items#index</h1>-->
+
+<h1>商品一覧</h1>
+<% @index_admin_item.each do |item| %><!--エラー-->
+
+  <p>商品ID</p>
+  <span>
+    <%= item_path(item.id) %>
+  </span>
+
+  <p>商品名</p>
+  <span>
+    <%=link_to item.name, item_path(item.id) %>
+  </span>
+
+  <p>税抜価格</p><!--エラー-->
+  <span>
+    <%= price %>
+  </span>
+
+  <p>ジャンル</p><!--エラー-->
+  <span>
+    <%= genre_path(genre_id) %>
+  </span>
+
+  <p>ステータス</p><!--エラー-->
+  <span>
+    <%= is_active %>
+  </span>
+
+<% end %>
+
+<!--ページネーション-->
+<%= paginate items %>

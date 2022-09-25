@@ -1,0 +1,10 @@
+<!--<h1>Admin::Genres#edit</h1>-->
+
+<h1>ジャンル編集</h1>
+
+<%= form_with model: @edit_admin_genre do |f| %>
+
+  <h4>ジャンル名</h4>
+  <%= f.genre_field :name %>
+  <%= f.submit '変更を保存', class: "btn btn-success" %>
+<% end %>
