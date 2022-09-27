@@ -1,21 +1,23 @@
 class Admin::ItemsController < ApplicationController
-  def index
+  def index#商品一覧
     #ページネーション
     @index_admin_item = Item.page(params[:page])
   end
 
-  def new
+  def new#商品新規登録
     # Viewへ渡すためのインスタンス変数に空のModelオブジェクトを生成する。
     @new_admin_item = Item.new
+    
   end
 
   def create
-    #データを受け取り新規登録するためのインスタンス作成
-    @create_admin_item = Item.new(admin_item_params)
-    #データをデータベースに保存するためのsaveメソッド実行
-    admin_items.save
-    #トップ画面へリダイレクト
-    redirect_to '/admin'
+    #newで新規登録後、商品一覧ページ(indexのパス)に遷移する
+    @new_admin_item = Item.new(admin_item_params)#updateのパラメータ
+    if @new_admin_item.save
+      redirect_to admin_items_path#indexのパス
+    else
+      render :new
+    end
   end
 
   def show#同じアクション内で同じメソッドは使えない
@@ -29,6 +31,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def update
+    
   end
 
   private
