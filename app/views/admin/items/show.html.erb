@@ -2,21 +2,85 @@
 
 <h1>商品詳細</h1><!--表示したいものが一つだけの場合、each文は書けない-->
 
-<h2>商品名</h2>
+<p>商品名</p>
 <p><%= @show_admin_item.name %></p>
 
-<h2>商品説明</h2>
+<p>商品説明</p>
 <p><%= @show_admin_item.introduction %></p>
 
-<h2>ジャンル</h2>
-<p><%= genre_path(genre_id) %></p>
+<p>ジャンル</p>
+<p><%= @show_admin_item.genre.name %></p>
 
-<h2>画像</h2>
+<p>税込価格(税抜価格)</p>
+<p><%= @show_admin_item.tax_included_price %>(<%= @show_admin_item.price %>)円</p>
+
+<p>販売ステータス</p>
+  <% if @show_admin_item.is_active == true %><!---->
+    <td><font color="green">販売中</font></td>
+  <% else %>
+    <td><font color="gray">販売停止中</font></td>
+  <% end %>
+
 <% if @show_admin_item.image.attached? %>
-  <%= image_tag item.image, size: "300x300" %>
+  <%= image_tag @show_admin_item.image, size: "300x200" %>
 <% else %>
   <%= image_tag 'no_image', size: "300x300" %>
 <% end %>
-<%= f.submit '編集する', class: "btn btn-success" %>
-<!--%<= link_to "編集する", edit_admin_item_path(items.id.edit) %>-->
-<% end %>
+
+<%= link_to "編集する", edit_admin_item_path(@show_admin_item.genre.id), class: "btn btn-success" %>
+
+<!--テーブル-->
+<TABLE BORDER="0">
+  <TR>
+    <TD>
+      <table border="0">
+        <tr>
+          <td>
+            <% if @show_admin_item.image.attached? %>
+              <%= image_tag @show_admin_item.image, size: "300x200" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "300x300" %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </TD>
+    
+    <TD>
+      <table border="0">
+        <tr>
+          <td>商品名</td>
+          <td>商品説明</td>
+          <td>ジャンル</td>
+          <td>税込価格(税抜価格)</td>
+          <td>販売ステータス</td>
+        </tr>
+      </table>
+    </TD>
+    <TD>
+      <table border="0">
+      <tr>
+        <td>
+          <%= @show_admin_item.name %>
+        </td>
+        <td>
+          <%= @show_admin_item.introduction %>
+        </td>
+        <td>
+          <%= @show_admin_item.genre.name %>
+        </td>
+        <td>
+          <%= @show_admin_item.tax_included_price %>(<%= @show_admin_item.price %>)円
+        </td>
+          <% if @show_admin_item.is_active == true %><!---->
+            <td><font color="green">販売中</font></td>
+          <% else %>
+            <td><font color="gray">販売停止中</font></td>
+          <% end %>
+      </tr>
+      </table>
+    </TD>
+  </TR>
+</TABLE>
+
+<%= link_to "編集する", edit_admin_item_path(@show_admin_item.genre.id), class: "btn btn-success" %>
