@@ -24,12 +24,12 @@ class Admin::GenresController < ApplicationController
   end
 
   def update
-    #editで編集後、ジャンル一覧・追加ページに遷移する
+    #editで編集後、ジャンル一覧・追加(index)に遷移する
     #@の変数は↑のeditに合わせているのではなく、render(失敗)したときの遷移先がedit画面なので、
     #そちらで使用されている@edit~と合わせる必要があり、結果的に↑と同じ変数名になる
     @edit_admin_genre = Genre.find(params[:id])
     if @edit_admin_genre.update(admin_genre_params)#updateのパラメータ
-      redirect_to admin_genres_path
+      redirect_to admin_genres_path#index
     else
       render :edit
     end

@@ -1,23 +1,28 @@
 <!--<h1>Admin::Genres#index</h1>-->
-<h1>ジャンル一覧・追加</h1>
-  <p>ジャンル名</p>
-  <%= form_with model: @genre, url: admin_genres_path do |f| %><!--url(遷移先):index-->
-  <%= f.text_field :name %>
-  <%= f.submit '新規登録', class: "btn btn-success" %>
-  <% end %>
+<h1><span style="background-color:lightgray">　ジャンル一覧・追加　</span></h1>
 <br>
-<table class="table">
-      <thead>
-        <tr>
-          <th>ジャンル</th>
-        </tr>
-      </thead>
+  <%= form_with model: @genre, url: admin_genres_path do |f| %><!--url(遷移先):index-->
+    <table border="0" style="display:flex; justify-content:center">
+      <tr>
+        <td width="120">ジャンル名</td>
+        <td width="250"><%= f.text_field :name %></td>
+        <td width="150"><%= f.submit '新規登録', class: "btn btn-success" %></td>
+      </tr>
+    </table>
+  <% end %>
+
+<br><br>
+  <table style="display:flex; justify-content:center">
+    <tr bgcolor="lightgray" style="text-align:center" height="50">
+      <th>ジャンル</th>
+      <th></th>
+    </tr>
   
-      <tbody>
-        <% @index_admin_genre.each do |genre| %>
-        <tr>
-          <td><%= genre.name %>　　　　　<%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %></td><!--edit画面に遷移-->
-        </tr>
-        <% end %>
-      </tbody>
-</table>
+    <% @index_admin_genre.each do |genre| %>
+    <tr height="50">
+      <td width="200"><%= genre.name %></td>
+      <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %></td><!--edit画面に遷移-->
+      <td></td>
+    </tr>
+    <% end %>
+  </table>

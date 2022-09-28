@@ -1,32 +1,42 @@
 <!--<h1>Admin::Items#edit</h1>-->
-
-<h1>商品編集</h1>
-
+<h1><span style="background-color:lightgray">　商品編集　</span></h1>
+<br>
 <%= form_with model: @edit_admin_item, url: admin_item_path(@edit_admin_item.id) do |item| %><!--url(遷移先):show-->
 
-  <p>商品画像</p>
-  <%= item.file_field :image, accept: "image/*" %>
-<br><br>
-  <p>商品名</p>
-  <%= item.text_field :name %>
-<br><br>
-  <p>商品説明</p>
-  <%= item.text_area :introduction %>
-<br><br>
-  <p>ジャンル</p>
-  <!--プルダウンを実装-->
-  <!--%<= f.collection_select :保存先のカラム名, テーブル（モデル）名.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>-->
-  <%= item.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
-<br><br>
-  <p>税抜価格</p>
-  <%= item.text_field :price %>
-  <p>円</p>
-<br><br>
-  <p>販売ステータス</p>
-    <%= item.radio_button :is_active, :true %>
-    <%= item.label :is_active, "販売中", {value: :true, style: "display: inline-block;"} %>
-    <%= item.radio_button :is_active, :false %>
-    <%= item.label :is_active, "販売停止中", {value: :false, style: "display: inline-block;"} %>
-<br><br>
-  <%= item.submit '変更を保存', class: "btn btn-success" %>
+<table border="0" style="display:flex; justify-content:center">
+  <tr>
+    <td height="50">商品画像</td>
+    <td><%= item.file_field :image, accept: "image/*" %></td>
+  </tr>
+  <tr>
+    <td height="50">商品名</td>
+    <td><%= item.text_field :name %></td>
+  </tr>
+  <tr>
+    <td height="80">商品説明</td>
+    <td><%= item.text_area :introduction %></td>
+  </tr>
+  <tr>
+    <td height="50">ジャンル</td>
+    <!--プルダウンを実装-->
+    <!--%<= f.collection_select :保存先のカラム名, テーブル（モデル）名.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>-->
+    <td><%= item.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %></td>
+  </tr>
+  <tr>
+    <td height="50">税抜価格</td>
+    <td><%= item.text_field :price %>円</td>
+  </tr>
+  <tr>
+    <td height="50">販売ステータス　　</td>
+    <td>
+      <%= item.radio_button :is_active, :true %>
+        <%= item.label :is_active, "販売中", {value: :true, style: "display: inline-block;"} %>
+      <%= item.radio_button :is_active, :false %>
+        <%= item.label :is_active, "販売停止中", {value: :false, style: "display: inline-block;"} %>
+    </td>
+  </tr>
+  <tr>
+    <td height="100" colspan="3" style="text-align: center"><%= item.submit '変更を保存', class: "btn btn-success" %></td>
+  </tr>
+</table>
 <% end %>
