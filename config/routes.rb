@@ -35,63 +35,59 @@ Rails.application.routes.draw do
     #derete 'sessions/destroy'
   #end
   
-    root to: 'homes#top', as: "root"
+    root to: 'homes#top'
     #get 'homes/top'
   end
 
 #ユーザ
-  namespace :public do
-    get 'addresses/index'
-    get 'addresses/edit'
-    get 'addresses/create'
-    get 'addresses/update'
-    get 'addresses/destroy'
-  end
-  
-  namespace :public do
-    get 'orders/new'
-    get 'orders/comfirm'
-    get 'orders/complete'
-    get 'orders/create'
-    get 'orders/index'
-    get 'orders/show'
-  end
-  
-  namespace :public do
-    get 'cart_items/index'
-    get 'cart_items/update'
-    get 'cart_items/destroy'
-    get 'cart_items/destroy_all'
-    get 'cart_items/create'
-  end
-  
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-    get 'customers/unsubscribe'
-    get 'customers/withdraw'
-  end
-  
-  #namespace :public do
+  scope module: :public do
+  #namespace→scope moduleに変更
+  #URLは変えず、ファイル構成だけ指定のパスにする(フォルダ名にはpublicをつけて、URLにはつけない)
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    #get 'addresses/index'
+    #get 'addresses/edit'
+    #post 'addresses/create'
+    #patch 'addresses/update'
+    #delete 'addresses/destroy'
+
+    resources :orders, only: [:new, :comfirm, :complete, :create, :index, :show]
+    #get 'orders/new'
+    #post 'orders/comfirm'
+    #get 'orders/complete'
+    #post 'orders/create'
+    #get 'orders/index'
+    #get 'orders/show'
+
+    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+    #get 'cart_items/index'
+    #patch 'cart_items/update'
+    #delete 'cart_items/destroy'
+    #delete 'cart_items/destroy_all'
+    #post 'cart_items/create'
+
+    resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
+    #get 'customers/show'
+    #get 'customers/edit'
+    #patch 'customers/update'
+    #get 'customers/unsubscribe'
+    #patch 'customers/withdraw'
+
     #get 'sessions/new'
-    #get 'sessions/create'
-    #get 'sessions/destroy'
-  #end
-  
-  namespace :public do
-    get 'registrations/new'
-    get 'registrations/create'
-  end
-  
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
-  end
-  
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
+    #post 'sessions/create'
+    #delete 'sessions/destroy'
+
+    #get 'registrations/new'
+    #post 'registrations/create'
+
+    resources :items, only: [:index, :show]
+    #get 'items/index'
+    #get 'items/show'
+
+    #'URL' => 'コントローラ#アクション', as: :Prefix(パスが入った変数)の変更
+    get "/" => 'homes#top', as: :top
+    get "/about" => "homes#about"
+    #get 'homes/top'
+    #get 'homes/about'
   end
   
   #devise_for :admins
