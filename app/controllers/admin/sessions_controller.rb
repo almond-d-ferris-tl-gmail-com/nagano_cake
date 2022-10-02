@@ -1,11 +1,12 @@
-class Admin::SessionsController < ApplicationController
-  def new
-    #ログインしたらTop画面に遷移する
-  end
+class Admin::SessionsController < Devise::SessionsController
+  
+  # def new
+  # #   #ログインしたらTop画面に遷移する
+  # end
 
-  def create
-  end
+  # def create
+  # end
 
-  def destroy
-  end
+  # def destroy
+  # end
 end

@@ -2,28 +2,28 @@
 <h1><span style="background-color:lightgray">　商品一覧　</span></h1>
 <br>
 <table style="display:flex; justify-content:center">
-        <tr bgcolor="lightgray" height="50">
-          <th width="150">商品ID</th>
-          <th width="350">商品名</th>
-          <th width="150">税抜価格(円)</th>
-          <th width="150">ジャンル</th>
-          <th width="150">ステータス</th>
-        </tr>
+  <tr bgcolor="lightgray" height="50">
+    <th width="150">商品ID</th>
+    <th width="350">商品名</th>
+    <th width="150">税抜価格(円)</th>
+    <th width="150">ジャンル</th>
+    <th width="150">ステータス</th>
+  </tr>
 
-        <% @index_admin_item.each do |item| %>
-        <tr height="50">
-          <td><%= item.id %></td>
-          <td><%=link_to item.name, admin_item_path(item.id) %></td><!--show画面に遷移-->
-          <td><%= item.price %></td>
-          <td><%= item.genre.name %></td>
-          
-          <% if item.is_active == true %><!---->
-            <td><font color="green">販売中</font></td>
-          <% else %>
-            <td><font color="gray">販売停止中</font></td>
-          <% end %>
-        </tr>
-        <% end %>
+  <% @index_admin_item.each do |item| %>
+    <tr height="50">
+      <td><%= item.id %></td>
+      <td><%=link_to item.name, admin_item_path(item.id) %></td><!--show画面に遷移-->
+      <td><%= item.price %></td>
+      <td><%= item.genre.name %></td>
+      
+      <% if item.is_active == true %><!---->
+        <td><font color="green">販売中</font></td>
+      <% else %>
+        <td><font color="gray">販売停止中</font></td>
+      <% end %>
+    </tr>
+  <% end %>
 </table>
 
 <!--ページネーション-->

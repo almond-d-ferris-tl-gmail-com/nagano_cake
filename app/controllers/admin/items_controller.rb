@@ -22,8 +22,6 @@ class Admin::ItemsController < ApplicationController
 
   def show#同じアクション内で同じメソッドは使えない
     @show_admin_item = Item.find(params[:id])
-    #@books = Book.all
-    #@user = @book.user
   end
 
   def edit

@@ -1,42 +1,31 @@
 Rails.application.routes.draw do
 
+# 顧客用
+# URL /customers/sign_in ...
+devise_for :customers, controllers: {
+  registrations: 'public/registrations',
+  sessions: 'public/sessions'
+}
+
+# 管理者用
+# URL /admin/sign_in ...
+devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  sessions: 'admin/sessions'
+}
+
 #管理者
   namespace :admin do
     patch 'order_details/update'
 
     resources :orders, only: [:show, :update]
-    #get 'orders/show' => 'orders#show'
-    #patch 'orders/update'
 
     resources :customers, only: [:index, :show, :edit, :update]
-    #get 'customers/index'
-    #get 'customers/show'
-    #get 'customers/edit'
-    #patch 'customers/update'
 
     resources :genres, only: [:index, :create, :edit, :update]
-    #get 'genres/index'
-    #post 'genres/create'
-    #get 'genres/edit'
-    #patch 'genres/update'
 
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
-    #get 'items/index'
-    #get 'items/new'
-    #post 'items/create'
-    #get 'items/show'
-    #get 'items/edit'
-    #patch 'items/update'
 
-  #namespace :admin do
-    #resources :sessions, only: [:new, :create, :destroy]
-    #get 'sessions/new'
-    #post 'sessions/create'
-    #derete 'sessions/destroy'
-  #end
-  
     root to: 'homes#top'
-    #get 'homes/top'
   end
 
 #ユーザ
@@ -44,68 +33,43 @@ Rails.application.routes.draw do
   #namespace→scope moduleに変更
   #URLは変えず、ファイル構成だけ指定のパスにする(フォルダ名にはpublicをつけて、URLにはつけない)
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-    #get 'addresses/index'
-    #get 'addresses/edit'
-    #post 'addresses/create'
-    #patch 'addresses/update'
-    #delete 'addresses/destroy'
 
-    resources :orders, only: [:new, :comfirm, :complete, :create, :index, :show]
-    #get 'orders/new'
-    #post 'orders/comfirm'
-    #get 'orders/complete'
-    #post 'orders/create'
-    #get 'orders/index'
-    #get 'orders/show'
+    resources :orders, only: [:new, :create, :index, :show]#:comfirm, :complete, 
+    #comfirmを追加
+    post 'orders/comfirm'
+    #completeを追加
+    get 'orders/complete'
 
-    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
-    #get 'cart_items/index'
-    #patch 'cart_items/update'
-    #delete 'cart_items/destroy'
-    #delete 'cart_items/destroy_all'
-    #post 'cart_items/create'
+    resources :cart_items, only: [:index, :update, :destroy, :create]#:destroy_all, 
+    delete 'cart_items/destroy_all'
 
-    resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
-    #get 'customers/show'
-    #get 'customers/edit'
-    #patch 'customers/update'
-    #get 'customers/unsubscribe'
-    #patch 'customers/withdraw'
-
-    #get 'sessions/new'
-    #post 'sessions/create'
-    #delete 'sessions/destroy'
-
-    #get 'registrations/new'
-    #post 'registrations/create'
+    #resources :customers, only: [:edit, :show, :update, :unsubscribe, :withdraw]
+    #→customersはURLを変更しなければいけないのでresourcesは使えない
+    #resourcesは基本の7つのみ使えるので、その他は手動で追加する(追加はto:不要)
+    
+    #customers
+    #edit URLを「/customers/:id/edit」→「/customers/information/edit」に変更
+    get 'customers/information/edit', to: 'customers#edit'
+    #show URLを「/customers/:id(.:format)」→「customers/my_page」に変更
+    get 'customers/my_page', to: 'customers#show'
+    #update URLを「/customers/:id(.:format)」→「/customers/information」に変更
+    patch '/customers/information', to: 'customers#update'
+    #unsubscribeを追加
+    get '/customers/unsubscribe'
+    #withdrawを追加
+    patch '/customers/withdraw'
 
     resources :items, only: [:index, :show]
-    #get 'items/index'
-    #get 'items/show'
 
     #'URL' => 'コントローラ#アクション', as: :Prefix(パスが入った変数)の変更
-    get "/" => 'homes#top', as: :top
-    get "/about" => "homes#about"
-    #get 'homes/top'
-    #get 'homes/about'
+    get '/' => 'homes#top', as: :top
+    get '/about' => 'homes#about'
   end
   
   #devise_for :admins
   #devise_for :customers
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-# 顧客用
-# URL /customers/sign_in ...
-devise_for :customers,skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-}
-
-# 管理者用
-# URL /admin/sign_in ...
-devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-  sessions: "admin/sessions"
-}
 
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

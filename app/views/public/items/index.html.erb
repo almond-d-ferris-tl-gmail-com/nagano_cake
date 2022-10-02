@@ -1,2 +1,46 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<!--<h1>Public::Items#index</h1>-->
+<div class="container">
+<p id="notice"><%= notice %></p>
+  <div class="row">
+      
+<!--サイドバー-->
+    <div class="col-lg-3">
+      <table class="table" style="display:flex; justify-content:center">
+        <tr bgcolor="lightgray" style="text-align:center" height="50">
+          <th>ジャンル検索</th>
+        </tr>
+        <% @genres.each do |genre| %>
+        <tr height="50">
+          <td width="150"><%= genre.name %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+    
+<!--メイン-->
+    <div class="col-lg-9">
+      <div class="text-nowrap"><!--自動改行禁止・・・できない-->
+        <h1>商品一覧</h1><p class="h5">(全<%= @items_max %>件)</p>
+      </div>
+      <br>
+      <table>
+          <tr height="50">
+          <% @items.each do |item| %>
+            <td>
+          <% if item.image.attached? %>
+            <%= image_tag item.image, size: "300x200" %><br>
+            <% else %>
+            <%= image_tag 'no_image', size: "300x300" %><br><!--画像４枚-->
+            <% end %>
+            <%= item.name %><br><!--商品名-->
+            税抜
+            <%= item.price %><!--金額-->
+            円
+            </td>
+          <% end %>
+          </tr>
+      </table>
+
+
+<!--ページネーション・・・いかない-->
+<%= paginate @index_public_item %>
