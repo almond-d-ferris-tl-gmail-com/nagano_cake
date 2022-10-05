@@ -1,2 +1,29 @@
-<h1>Admin::Customers#index</h1>
-<p>Find me in app/views/admin/customers/index.html.erb</p>
+<!--<h1>Admin::Customers#index</h1>-->
+<h1><span style="background-color:lightgray">　会員一覧　</span></h1>
+<br>
+<table style="display:flex; justify-content:center">
+  <tr bgcolor="lightgray" height="50">
+    <th width="150">会員ID</th>
+    <th width="150">氏名</th>
+    <th width="350">メールアドレス</th>
+    <th width="150">会員ステータス</th>
+  </tr>
+  
+  <% @page.each do |page| %>
+    <tr height="50">
+      <td><%= page.id %></td>
+      <td><%=link_to page.last_name+page.first_name, admin_customer_path(page.id) %></td><!--show画面に遷移-->
+      <td><%= page.email %></td>
+
+        <% if page.is_deleted == false %>
+      <td><font color="green">有効</font></td>
+        <% else %>
+      <td><font color="gray">退会</font></td>
+        <% end %>
+    </tr>
+  <% end %>
+</table>
+
+<!--ページネーション-->
+<!--https://getbootstrap.jp/→ドキュメント→検索-->
+<div class="d-flex justify-content-center"><%= paginate @page %></div>

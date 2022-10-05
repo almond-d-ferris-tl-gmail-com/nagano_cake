@@ -1,8 +1,10 @@
 class Admin::ItemsController < ApplicationController
   def index#商品一覧
     #ページネーション
-    @index_admin_item = Item.page(params[:page])
+    #@index_admin_item = Item.page(params[:page])
+    @page = Item.all.page(params[:page]).per(10)
   end
+  
 
   def new#商品新規登録
     # Viewへ渡すためのインスタンス変数に空のModelオブジェクトを生成する。
@@ -34,15 +36,19 @@ class Admin::ItemsController < ApplicationController
     #そちらで使用されている@edit~と合わせる必要があり、結果的に↑と同じ変数名になる
     @edit_admin_item = Item.find(params[:id])
     if @edit_admin_item.update(admin_item_params)#updateのパラメータ
-      redirect_to admin_item_path#
+      redirect_to admin_item_path#admin/items#show
     else
       render :edit
     end
 
   end
 
+  #投稿データのストロングパラメータ(セキュリティに関係する)
+  #require/permitメソッド:DBの更新時、不要なパラメータを取り除く(必要なパラメータだけに絞り込む)
+  #require(パラメータ群).permit(:変更可能なパラメータ名)
+  #商品編集(edit)をした後、updateに遷移する
   private
-  def admin_item_params
+  def admin_item_params#updateのパラメータ
     params.require(:item).permit(:image, :name, :introduction, :genre_id, :price, :is_active)
   end
 end
