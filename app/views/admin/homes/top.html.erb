@@ -1,12 +1,42 @@
 <!--<h1>Admin::Homes#top</h1>-->
+<h1><span style="background-color:lightgray">　注文履歴一覧　</span></h1>
+<br>
+<table style="display:flex; justify-content:center">
+  <tr bgcolor="lightgray" height="50">
+    <th width="350">購入日時</th>
+    <th width="150">購入者</th>
+    <th width="150">購入個数</th>
+    <th width="150">注文ステータス</th>
+  </tr>
+  
+<% @orders.each do |order| %>
+    <tr height="50">
+      <!--購入日時-->
+      <td><%#=link_to order.?, admin_order_path(order.id) %></td><!--admin/orders#show画面に遷移-->
+      <td><%= order.name %></td>
+      <!--order.amountだとorderテーブルのamountカラムになってしまう。その注文に紐づいている注文商品数-->
+      <td><%= order.order_details.sum(:amount) %></td><!--個人の注文数量総計-->
+      <td><%= order.status %></td>
+       
+      <% if order.is_active == true %><!---->
+        <td><font color="green">販売中</font></td>
+      <% else %>
+        <td><font color="gray">販売停止中</font></td>
+      <% end %>
+    </tr>
+<% end %>
+</table>
+
+<!--ページネーション-->
+<!--https://getbootstrap.jp/→ドキュメント→検索-->
+<div class="d-flex justify-content-center"><%#= paginate @page %></div>
 
 
 
 
 
 
-
-  <%# @page.each do |page| %>
+  <%# @order.each do |page| %>
   <%# end %>
 
 <!--ページネーション-->

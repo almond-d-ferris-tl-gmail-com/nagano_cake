@@ -25,12 +25,16 @@ class Public::CustomersController < ApplicationController
   end
 
   def unsubscribe
-    @destroy_public_customer = current_customer
-    @destroy_public_customer.destroy
-    redirect_to '/'#public/homes#top(トップページ)URL
+    #@unsubscribe_public_customer = current_customer
   end
 
   def withdraw
+    @withdraw_public_customer = current_customer
+    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+    @withdraw_public_customer.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to top_path#top画面
   end
 
   #投稿データのストロングパラメータ(セキュリティに関係する)

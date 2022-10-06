@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers, controllers: {
@@ -54,9 +55,9 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get 'customers/my_page', to: 'customers#show'
     #update URLを「/customers/:id(.:format)」→「/customers/information」に変更
     patch '/customers/information', to: 'customers#update'
-    #unsubscribeを追加
+    #unsubscribeを追加、退会確認
     get '/customers/unsubscribe'
-    #withdrawを追加
+    #withdrawを追加、退会処理
     patch '/customers/withdraw'
 
     resources :items, only: [:index, :show]

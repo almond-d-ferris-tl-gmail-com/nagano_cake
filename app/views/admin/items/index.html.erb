@@ -11,7 +11,6 @@
   </tr>
 
 <% @page.each do |page| %>
-  <%# @index_admin_page.each do |item| %>
     <tr height="50">
       <td><%= page.id %></td>
       <td><%=link_to page.name, admin_item_path(page.id) %></td><!--show画面に遷移-->
