@@ -1,7 +1,7 @@
 <!--<h1>Admin::Genres#index</h1>-->
 <h1><span style="background-color:lightgray">　ジャンル一覧・追加　</span></h1>
 <br>
-  <%= form_with model: @genre, url: admin_genres_path do |f| %><!--url(遷移先):index-->
+  <%= form_with model: @genre, url: admin_genres_path do |f| %><!--url(遷移先):admin/genres#create-->
     <table border="0" style="display:flex; justify-content:center">
       <tr>
         <td width="120">ジャンル名</td>
@@ -21,7 +21,8 @@
     <% @index_admin_genre.each do |genre| %>
     <tr height="50">
       <td width="200"><%= genre.name %></td>
-      <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %></td><!--edit画面に遷移-->
+      <!--admin/genres#edit(ジャンル編集)に遷移-->
+      <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %></td>
       <td></td>
     </tr>
     <% end %>

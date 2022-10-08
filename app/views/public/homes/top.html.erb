@@ -37,15 +37,17 @@
           <tr height="50">
           <% @items.each do |item| %>
             <td>
-          <% if item.image.attached? %>
-            <%= image_tag item.image, size: "300x200" %><br>
-            <% else %>
-            <%= image_tag 'no_image', size: "300x300" %><br><!--画像４枚-->
+            <%= link_to item_path(item.id) do %><!--画像、商品名、金額に商品詳細(public/items#show)へのリンク-->
+              <% if item.image.attached? %>
+                <%= image_tag item.image, size: "300x200" %><br>
+              <% else %>
+                <%= image_tag 'no_image', size: "300x300" %><br><!--画像４枚-->
+              <% end %>
+                <%= item.name %><br><!--商品名-->
+                税抜
+                <%= item.price %><!--金額-->
+                円
             <% end %>
-            <%= item.name %><br><!--商品名-->
-            税抜
-            <%= item.price %><!--金額-->
-            円
             </td>
           <% end %>
           </tr>

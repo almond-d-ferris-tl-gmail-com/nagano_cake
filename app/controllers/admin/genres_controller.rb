@@ -7,7 +7,7 @@ class Admin::GenresController < ApplicationController
   end
 
   def create
-    #indexで新規登録後、ジャンル一覧・追加ページ(indexのパス)に遷移する
+    #indexで新規登録後、ジャンル一覧・追加ページ(index)に遷移する
     @genre = Genre.new(admin_genre_params)#updateのパラメータ
     if @genre.save
       redirect_to admin_genres_path#indexのパス
@@ -18,9 +18,6 @@ class Admin::GenresController < ApplicationController
 
   def edit#ジャンル編集画面
     @edit_admin_genre = Genre.find(params[:id])
-    #if @edit_admin_genre.admin == current_admin
-      #redirect_to admin_genres_path
-    #end
   end
 
   def update
@@ -35,8 +32,8 @@ class Admin::GenresController < ApplicationController
     end
   end
 
-  private
-  def admin_genre_params
+  private#editで編集可能部分
+  def admin_genre_params#update
     params.require(:genre).permit(:name)
   end
   
