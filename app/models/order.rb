@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+    
     #payment_method(支払い方法)カラム
     #0:credit_card(クレジットカード)、1:transfer(銀行振込)
     enum payment_method: { credit_card: 0, transfer: 1 }

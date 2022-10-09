@@ -21,7 +21,6 @@ class Public::CustomersController < ApplicationController
     else
       render :edit
     end
-
   end
 
   def unsubscribe

@@ -1,2 +1,50 @@
-<h1>Public::Orders#comfirm</h1>
-<p>Find me in app/views/public/orders/comfirm.html.erb</p>
+<!--<h1>Public::Orders#comfirm</h1>-->
+<h1><span style="background-color:lightgray">  注文情報確認  </span></h1>
+<br>
+  <table border="1" class="mx-auto">
+    <thead>
+      <tr bgcolor="lightgray" height="50">
+        <th width="400">商品名</th>
+        <th width="150">単価(税込)</th>
+        <th width="150">数量</th>
+        <th width="150">小計</th>
+        <th width="50"></th>
+        <th width="150">送料</th>
+        <th width="150" bgcolor="white">800</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @comfirm_public_order.each do |order| %>
+      <%# @total = @total + item.subtotal_price %><!--小計を足していく-->
+        <tr height="80">
+          <td><%= image_tag order.item.get_image %><%= order.item.name %></td>
+          <td><%= order.item.tax_included_price %></td><!--税込-->
+          <td><%= order.item.amount %></td><!--数量-->
+          <td><%= order.item.subtotal_price %></td><!--小計-->
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<br>
+  <table border="0" style="display:flex; justify-content:center">
+      <tr>
+        <td height="50"><h3><b>支払方法</b></h3></td>
+        <td>　　<%= @comfirm_public_order.payment_method %></td>
+      </tr>
+
+      <tr>
+        <td height="50"><h3><b>お届け先</b></h3></td>
+        <td>　　〒<%= @comfirm_public_order.postal_code %>　<%= @comfirm_public_order.address %></td>
+      </tr>
+      
+      <tr>
+        <td height="50"><h3><b>　　　　</b></h3></td>
+        <td>　　<%= @comfirm_public_order.name %></td>
+      </tr>
+  </table>
+<br><br>
+    <div class="text-center">
+        <!--遷移先：public/orders#create-->
+        <%= link_to "注文を確定する", orders_path, class: "btn btn-success" %>
+    </div>

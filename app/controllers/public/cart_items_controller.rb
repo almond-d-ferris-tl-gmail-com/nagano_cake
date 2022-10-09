@@ -7,20 +7,20 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy
-    @destroy_public_cart_item = Address.find(params[:id])
+    @destroy_public_cart_item = CartItem.find(params[:id])
     @destroy_public_cart_item.destroy
     redirect_to '/cart_items'#indexへのURL
   end
 
   def destroy_all
-    @destroy_all_public_cart_item = Address.find(params[:id])
+    @destroy_all_public_cart_item = CartItem.find(params[:id])
     @destroy_all_public_cart_item.destroy
     redirect_to '/cart_items'#indexへのURL
   end
 
   def create
-    @create_public_cart_item = CartItem.new(cart_item_params)
-    @create_public_cart_item.customer_id = current_customer.id#
+    @create_public_cart_item = CartItem.new(cart_item_params)#updateのパラメータ
+    @create_public_cart_item.customer_id = current_customer.id#顧客idと現在ログインしている顧客idを結びつける
     #注文の追加
     if @create_public_cart_item.save
       redirect_to cart_items_path#カートのpublic/cart_items#index
@@ -39,8 +39,8 @@ class Public::CartItemsController < ApplicationController
     end
   end
 
-  private#indexで編集可能部分
+  private
   def cart_item_params#updateのパラメータ
-    params.require(:cart_item).permit(:item_id, :amount)
+    params.require(:cart_item).permit(:item_id, :amount)#permitメソッド:paramsで取得したパラメーターに対し保存の許可を行う
   end
 end
