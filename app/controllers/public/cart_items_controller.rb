@@ -1,8 +1,6 @@
 class Public::CartItemsController < ApplicationController
   def index
-    #@items = Item.all
     @cart_item = current_customer.cart_items#current_customer(1):cart_items(多)
-    #@index_public_cart_item = Item.find(params[:id])
     @total = 0
   end
 

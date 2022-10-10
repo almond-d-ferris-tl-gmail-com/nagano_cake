@@ -13,7 +13,7 @@
         <td><!--ラジオボタン-->
             <!--クレジットカード-->
             　　<%= f.radio_button :payment_method, Order.payment_methods.key(0), {:checked => true} %><!--{:checked => true}→初期選択-->
-                <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+                <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %><!--i18n→日本語に変換する-->
         </td>
       </tr>
       
@@ -21,7 +21,7 @@
         <td>
             <!--銀行振込-->
             　　<%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-                <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
+                <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%><!--i18n→日本語に変換する-->
         </td>
       </tr>
       

@@ -14,7 +14,7 @@ class Item < ApplicationRecord
     has_many :cart_items, dependent: :destroy
 
     
-    def tax_included_price#税込の計算
+    def tax_included_price#税込の計算　.to_i→整数に変換して小数点を切り捨てる
         (price * 1.1).to_i
     end
     
