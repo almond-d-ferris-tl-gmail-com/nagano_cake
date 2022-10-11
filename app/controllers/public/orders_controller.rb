@@ -23,7 +23,7 @@ class Public::OrdersController < ApplicationController
           order_item.order_id = @create_public_order.id
           #order_item.order_get_image = cart.get_image#商品画像
           #order_item.order_name = cart.name#商品名
-          order_item.price = cart.item.price#税込 cart.price→カートに税込カラムがないといけない→item_idがある→アソシエーションでつながっている
+          order_item.price = cart.item.price#税込 cart.priceだとカートに税込カラムがないといけない→item_idがある→アソシエーションでつなげる
           order_item.amount = cart.amount#数量
           #order_item.order_subtotal_price = cart.subtotal_price#小計
           # カート情報を削除するので item との紐付けが切れる前に保存する

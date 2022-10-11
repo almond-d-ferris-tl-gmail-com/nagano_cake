@@ -35,11 +35,12 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   #URLは変えず、ファイル構成だけ指定のパスにする(フォルダ名にはpublicをつけて、URLにはつけない)
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
+    #completeを追加　orders#showよりも上に記述しないとcompleteがid扱いされてしまう
+    get 'orders/complete'
+
     resources :orders, only: [:new, :create, :index, :show]#:comfirm, :complete, 
     #comfirmを追加
     post 'orders/comfirm'
-    #completeを追加
-    get 'orders/complete'
 
     resources :cart_items, only: [:index, :update, :destroy, :create]#:destroy_all, 
     delete 'cart_items/destroy_all'
