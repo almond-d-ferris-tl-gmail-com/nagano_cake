@@ -20,10 +20,16 @@
           <!--.in_time_zone('Tokyo')→UTC(協定世界時刻のデフォルト値)をJST(日本時間)に換算する-->
           <!--.strftime("%Y-%m-%d %H:%M:%S")→UTCを消して時刻のフォーマットに変更する-->
           <td width="500">〒<%= order.postal_code %><%= order.address %><br><%= order.name %></td><!--郵便番号、住所、氏名-->
-          <td width="150"><%= order.name %></td><!--注文商品-->
-          <td width="150"><%= order.total_payment.to_s(:delimited) %></td><!--支払金額--><!--to_s(:delimited)→文字列に変換してカンマをつける-->
+
+          <td width="200">
+          <% order.order_details.each do |order_detail| %>
+            <%#= image_tag order.item.get_image %><%= order_detail.item.name %><!--注文商品--><br>
+          <% end %>
+          </td>
+          
+          <td width="100"><%= order.total_payment.to_s(:delimited) %></td><!--支払金額--><!--to_s(:delimited)→文字列に変換してカンマをつける-->
           <td width="100"><%= order.status %></td><!--ステータス-->
-          <td width="150" align="center"><!--注文詳細-->
+          <td width="150" class="text-center"><!--注文詳細-->
             <!--遷移先：public/orders#show(注文履歴詳細)-->
             <%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %>　　
           </td>

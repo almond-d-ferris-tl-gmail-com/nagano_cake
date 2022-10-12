@@ -1,7 +1,6 @@
 class Admin::HomesController < ApplicationController
   def top
     #ページネーション
-    #@page = Customer.all.page(params[:page]).per(10)
-    @orders = Order.all
+    @top_admin_home = Order.all.page(params[:page]).per(10)
   end
 end

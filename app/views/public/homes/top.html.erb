@@ -39,9 +39,9 @@
             <td>
             <%= link_to item_path(item.id) do %><!--画像、商品名、金額に商品詳細(public/items#show)へのリンク-->
               <% if item.image.attached? %>
-                <%= image_tag item.image, size: "300x200" %><br>
+                <%= image_tag item.image, size: "200x150" %><br>
               <% else %>
-                <%= image_tag 'no_image', size: "300x300" %><br><!--画像４枚-->
+                <%= image_tag 'no_image', size: "200x150" %><br><!--画像４枚-->
               <% end %>
                 <%= item.name %><br><!--商品名-->
                 税抜

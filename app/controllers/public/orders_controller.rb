@@ -40,7 +40,8 @@ class Public::OrdersController < ApplicationController
 
   def index
     #@purchase_history = current_customer.cart_items#current_customer(1):cart_items(多)
-    @index_public_order = Order.all
+    @index_public_order = current_customer.orders.all#Order.all
+    
   end
 
   def show
@@ -53,7 +54,7 @@ class Public::OrdersController < ApplicationController
       @order = Order.new(order_params)
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
-      @order.name = current_customer.first_name + current_customer.last_name
+      @order.name = current_customer.last_name + current_customer.first_name#姓・名
 
     elsif params[:order][:select_address] == "1"#登録済み住所
       @order = Order.new(order_params)
