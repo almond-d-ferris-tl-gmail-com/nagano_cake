@@ -1,4 +1,8 @@
 class Public::HomesController < ApplicationController
+  # ログインしていない場合、ヘッダーのボタンをクリックしたら強制的にログイン画面に移動する
+  # except→ログイン画面への遷移を除外する→topボタンを押したらtopに遷移する
+  #before_action :authenticate_customer!, except: [:top]#customer→テーブル名
+
   def top
     #@top_public_home = Home.find(params[:id])
     #サイドバー

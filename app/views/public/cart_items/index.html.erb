@@ -25,7 +25,7 @@
       <% @cart_item.each do |item| %>
       <% @total = @total + item.subtotal_price %><!--小計を足していく-->
         <tr height="80">
-          <td><%= image_tag item.item.get_image %><%= item.item.name %></td>
+          <td><%= image_tag item.item.get_image, size: '150x100'%><%= item.item.name %></td>
           <td><%= item.item.tax_included_price %></td><!--税込-->
         <!--プルダウンの実装-->
           <td>

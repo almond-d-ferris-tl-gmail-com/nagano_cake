@@ -1,4 +1,8 @@
 class Public::OrdersController < ApplicationController
+  # ログインしていない場合、ヘッダーのボタンをクリックしたら強制的にログイン画面に移動する
+  # except→ログイン画面への遷移を除外する→今回は除外するものがない
+  before_action :authenticate_customer!
+  
   def new#注文情報入力
     @new_public_order = Order.new
     @customer = current_customer

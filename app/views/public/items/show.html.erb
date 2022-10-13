@@ -9,11 +9,11 @@
       <tr bgcolor="lightgray" style="text-align:center" height="50">
         <th>ジャンル検索</th>
       </tr>
-      <!--%< @genres.each do |genre| %>-->
+      <% @genres.each do |genre| %>
       <tr height="50">
-        <!--<td width="150">%<= genre.name %></td>-->
+        <td width="150"><%= genre.name %></td>
       </tr>
-      <!--%< end %>-->
+      <% end %>
     </table>
   </div>
     
