@@ -1,13 +1,12 @@
 <!--<h1>Public::Sessions#new</h1>Log in-->
 <!--ログイン時にnameを使用する場合、nameカラムを追加する必要がある-->
 <!--参考：https://qiita.com/yuki82511988/items/73659af9d1049bd1b256-->
-
-<h1><span style="background-color:lightgray">ログイン</span></h1>
 <br>
-<h3><span style="background-color:lightgray">会員の方はこちらからログイン</span></h3>
+<h1><span style="background-color:lightgray" class="m-5">　ログイン　</span></h1>
+<br>
+<h3><span style="background-color:lightgray" class="m-5">　会員の方はこちらからログイン　</span></h3>
   <!--form_forのままでOK-->
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-<%#= form_with model: @public, url: new_customer_session_path do |f| %>
 
       <table border="0" class="mx-auto">
         <tr>
@@ -36,5 +35,8 @@
 <% end %>
 
 <br><br>
-<h3><span style="background-color:lightgray">会員登録がお済みでない方</span></h3>
-<p><%= render "public/shared/links", text: "こちら" %>から新規登録を行ってください。</p>
+<h3><span style="background-color:lightgray" class="m-5">　会員登録がお済みでない方　</span></h3>
+<p class="m-3 pl-5"><%= render "public/shared/links" %>から新規登録を行ってください。</p>
+<!--m-3→マージン、pl-5→左側パディング-->
+<!--設定→/nagano_cake/app/views/public/shared/_links.html.erb-->
+<br>

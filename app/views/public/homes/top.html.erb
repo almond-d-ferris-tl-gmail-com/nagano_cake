@@ -1,10 +1,11 @@
 <!--<h1>Public::Homes#top</h1>-->
+<br>
 <div class="container">
 <p id="notice"><%= notice %></p>
   <div class="row">
       
 <!--サイドバー-->
-    <div class="col-lg-3">
+    <div class="col-lg-2">
       <table class="table" style="display:flex; justify-content:center">
         <tr bgcolor="lightgray" style="text-align:center" height="50">
           <th>ジャンル検索</th>
@@ -18,9 +19,11 @@
     </div>
     
 <!--メイン-->
-    <div class="col-lg-9">
+    <div class="col-lg-10">
     　<div class="main-container">
-      <div class="mx-auto bd-color"><!--ブロック中央寄せ-->
+      <div class="mx-auto bd-color pl-5 pr-5">
+      <!--mx-auto→ブロック中央寄せ、bd-color→画像透過、pl-5→左側パディング、pr-5→右側パディング-->
+      <!--画像サイズ、透過設定→/nagano_cake/app/javascript/stylesheets/application.scss-->
       　<b>
         <h4>ようこそ、ながのCAKEへ！</h4>
       　<h4>このサイトは、ケーキ販売のECサイトになります。</h4>
@@ -57,6 +60,7 @@
   </div>
 <br>
 
-<div align="right">
+<div align="right" class="pr-5">
 <%= link_to "全ての商品を見る＞", items_path %><!--index画面に遷移-->
 </div>
+<br>
