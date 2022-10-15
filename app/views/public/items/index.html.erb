@@ -1,10 +1,11 @@
 <!--<h1>Public::Items#index</h1>-->
+<br>
 <div class="container">
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%#= notice %></p>-->
   <div class="row">
       
 <!--サイドバー-->
-    <div class="col-lg-3">
+    <div class="col-lg-2">
       <table class="table" style="display:flex; justify-content:center">
         <tr bgcolor="lightgray" style="text-align:center" height="50">
           <th>ジャンル検索</th>
@@ -18,15 +19,11 @@
     </div>
     
 <!--メイン-->
-    <div class="col-lg-9">
-      <div class="text-nowrap"><!--自動改行禁止・・・できない-->
-        <h1>商品一覧</h1><p class="h5">(全<%= @items_max %>件)</p>
-      </div>
-      <br>
-      <table>
-          <tr height="50">
+    <div class="col-lg-10">
+      <span style="font-size:40px">商品一覧</span><span style="font-size:24px">(全<%= @items_max %>件)</span>
+      <br><br>
+        <div class="d-flex flex-wrap"><!--flex-wrap→改行する-->
           <% @items.each do |item| %>
-            <td>
             <%= link_to item_path(item.id) do %><!--画像、商品名、金額に商品詳細(public/items#show)へのリンク-->
               <% if item.image.attached? %>
                 <%= image_tag item.image, size: "300x200" %><br>
@@ -36,13 +33,10 @@
               <%= item.name %><br><!--商品名-->
               税抜
               <%= item.price %><!--金額-->
-              円
+              円<br>
             <% end %>
-            </td>
           <% end %>
-          </tr>
-      </table>
-
-
-<!--ページネーション・・・いかない-->
-<%= paginate @index_public_item %>
+        </div>
+<br><br>
+<div class="d-flex justify-content-center"><%= paginate @items %></div>
+<br>

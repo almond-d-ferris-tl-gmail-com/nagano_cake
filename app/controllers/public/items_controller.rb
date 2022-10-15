@@ -4,15 +4,14 @@ class Public::ItemsController < ApplicationController
   before_action :authenticate_customer!, except: [:index]#customer→テーブル名
   
   def index#商品一覧
-    #ページネーション
-    @index_public_item = Item.page(params[:page])
     #サイドバー
     @genres = Genre.all
     #商品一覧　idを新着順に並び替える
-    @items = Item.order('id DESC')
+    @items = Item.where(is_active:true).order('id DESC').page(params[:page]).per(8)
+    #where→()内の条件が合っていればデータを持ってくる、今回は販売中の商品(is_active:true)のみデータを表示させる
+    #DESC→降順に並び替える、per(8)→8件表示
     #商品の最大値を取得
     @items_max = Item.maximum(:id)
-
   end
 
   def show

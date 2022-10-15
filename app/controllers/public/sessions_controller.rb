@@ -1,15 +1,5 @@
 class Public::SessionsController < Devise::SessionsController
   
-  # def new
-  #   super
-  # end
-
-  # def create
-  # end
-
-  # def destroy
-  # end
-
 before_action :customer_state, only: [:create]
 
 protected
@@ -30,3 +20,14 @@ protected
   end
 
 end
+
+  # def new
+  #   super
+  # end
+
+  # def create
+  # end
+
+  # def destroy
+  # end
+

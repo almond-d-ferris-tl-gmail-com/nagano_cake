@@ -1,5 +1,6 @@
 <!--<h1>Public::Orders#index</h1>-->
-<h1><span style="background-color:lightgray">  注文履歴一覧  </span></h1>
+<br>
+<h1><span style="background-color:lightgray" class="m-5">　注文履歴一覧　</span></h1>
 <br>
   <table border="1" width="1200" class="mx-auto"><!--ボーダーを入れるときは←の設定する(widthはtdの総計)-->
     <thead>
@@ -29,7 +30,7 @@
           
           <td width="100"><%= order.total_payment.to_s(:delimited) %></td><!--支払金額--><!--to_s(:delimited)→文字列に変換してカンマをつける-->
           <td width="100"><%= order.status %></td><!--ステータス-->
-          <td width="150" class="text-center"><!--注文詳細-->
+          <td width="150" align="center"><!--注文詳細-->
             <!--遷移先：public/orders#show(注文履歴詳細)-->
             <%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %>　　
           </td>
@@ -37,4 +38,4 @@
     <% end %>
     </tbody>
   </table>
-<br><br>
+<br>

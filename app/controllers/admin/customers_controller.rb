@@ -1,8 +1,7 @@
 class Admin::CustomersController < ApplicationController
   def index
-    #ページネーション
+    #ページネーション、10件表示
     @page = Customer.all.page(params[:page]).per(10)
-
   end
 
   def show

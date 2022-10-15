@@ -1,5 +1,7 @@
 <!--<h1>Public::Addresses#edit</h1>-->
-<h1><span style="background-color:lightgray">  配送先編集  </span></h1>
+<br>
+<h1><span style="background-color:lightgray" class="m-5">　配送先編集　</span></h1>
+<br>
   <%= form_with model: @edit_public_address, url: address_path do |f| %><!--url(遷移先):public/addresses#update-->
     <table border="0" style="display:flex; justify-content:center">
       <tr height="50">
@@ -19,3 +21,4 @@
       </tr>
     </table>
   <% end %>
+<br>

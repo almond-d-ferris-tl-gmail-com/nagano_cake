@@ -1,5 +1,6 @@
 <!--<h1>Public::Customers#unsubscribe</h1>-->
-<h3 class="text-center">本当に退会しますか？</h3>
+<br><br><br>
+<h2 class="text-center">本当に退会しますか？</h2>
 <br>
 <div class="text-center">
   <p>退会すると、会員登録情報や</p>
@@ -13,3 +14,4 @@
     <!--遷移先：public/customers#withdraw(顧客の退会処理)-->
     <%= link_to "退会する", customers_withdraw_path, class: "btn btn-danger", method: :PATCH, "data-confirm" => "本当に退会しますか？" %>
 </div>
+<br>

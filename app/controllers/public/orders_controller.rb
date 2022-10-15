@@ -25,15 +25,12 @@ class Public::OrdersController < ApplicationController
           order_item = OrderDetail.new
           order_item.item_id = cart.item_id
           order_item.order_id = @create_public_order.id
-          #order_item.order_get_image = cart.get_image#商品画像
-          #order_item.order_name = cart.name#商品名
           order_item.price = cart.item.price#税込 cart.priceだとカートに税込カラムがないといけない→item_idがある→アソシエーションでつなげる
           order_item.amount = cart.amount#数量
-          #order_item.order_subtotal_price = cart.subtotal_price#小計
           # カート情報を削除するので item との紐付けが切れる前に保存する
           order_item.save
           end
-          cart_items.destroy_all#cart_items_destroy_all#データ削除の遷移先(public/cart_items#destroy_all)
+          cart_items.destroy_all#データ削除の遷移先(public/cart_items#destroy_all)
         redirect_to orders_complete_path#public/orders#complete(注文確定(サンクス))
         # ユーザーに関連するカートのデータ(購入したデータ)をすべて削除(カートを空にする)
       else
@@ -43,7 +40,6 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    #@purchase_history = current_customer.cart_items#current_customer(1):cart_items(多)
     @index_public_order = current_customer.orders.all#Order.all
     
   end

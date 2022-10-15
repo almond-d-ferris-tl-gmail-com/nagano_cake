@@ -7,7 +7,7 @@ class Public::AddressesController < ApplicationController
     #新規作成
     @address = Address.new
     #一覧表示
-    @index_public_address = Address.all
+    @index_public_address = current_customer.addresses.all
   end
 
   def edit#配送先編集

@@ -38,12 +38,12 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     #completeを追加　orders#showよりも上に記述しないとcompleteがid扱いされてしまう
     get 'orders/complete'
 
-    resources :orders, only: [:new, :create, :index, :show]#:comfirm, :complete, 
     #comfirmを追加
     post 'orders/comfirm'
+    resources :orders, only: [:new, :create, :index, :show]#:comfirm, :complete, 
 
-    resources :cart_items, only: [:index, :update, :destroy, :create]#:destroy_all, 
     delete 'cart_items/destroy_all'
+    resources :cart_items, only: [:index, :update, :destroy, :create]#:destroy_all, 
 
     #resources :customers, only: [:edit, :show, :update, :unsubscribe, :withdraw]
     #→customersはURLを変更しなければいけないのでresourcesは使えない

@@ -1,5 +1,6 @@
 <!--<h1>Public::Orders#show</h1>-->
-<h1><span style="background-color:lightgray">　注文履歴詳細　</span></h1>
+<br>
+<h1><span style="background-color:lightgray" class="m-5">　注文履歴詳細　</span></h1>
 <br>
 <div class="container">
   <div class="row">
@@ -48,19 +49,19 @@
 
 <table border="1" class="mx-auto">
   <thead>
-    <td><h3>注文内容</h3></td>
+    <h3 align="center">注文内容</h3>
     <tr bgcolor="lightgray" height="50">
       <th width="500">商品</th>
-      <th width="150">単価(税込)</th>
-      <th width="150">個数</th>
-      <th width="150">小計</th>
+      <th width="100">単価(税込)</th>
+      <th width="100">個数</th>
+      <th width="100">小計</th>
     </tr>
   </thead>
 
   <tbody>
     <% @show_public_order.order_details.each do |order| %>
     <%# @total_payment = @total_payment + order.subtotal_price %><!--小計を足していく-->
-      <tr height="100">
+      <tr height="50">
         <td><%#= image_tag order.item.get_image %><%= order.item.name %></td><!--商品画像--><!--商品名-->
         <td><%= order.item.tax_included_price.to_s(:delimited) %></td><!--税込--><!--to_s(:delimited)→文字列に変換してカンマをつける-->
         <td><%= order.amount %></td><!--数量-->
@@ -69,4 +70,4 @@
     <% end %>
   </tbody>
 </table>
-<!---->
+<br>

@@ -1,5 +1,6 @@
 <!--<h1>Public::Orders#new</h1>-->
-<h1><span style="background-color:lightgray">　注文情報入力　</span></h1>
+<br>
+<h1><span style="background-color:lightgray" class="m-5">　注文情報入力　</span></h1>
 <br>
 
 <%= form_with model: @new_public_order, url: orders_comfirm_path do |f| %><!--url(遷移先):public/orders#comfirm-->
@@ -38,7 +39,7 @@
 
       <tr>
         <td><!--カスタマー住所-->
-            　　　　<%= @customer.postal_code %>　<%= @customer.address %>
+              　　　　〒<%= @customer.postal_code %>　<%= @customer.address %>
         </td>
       </tr>
  
@@ -88,6 +89,5 @@
     <div class="text-center">
         <%= f.submit '確認画面へ進む', class: "btn btn-primary" %>
     </div>
-
 <% end %>
-
+<br>
