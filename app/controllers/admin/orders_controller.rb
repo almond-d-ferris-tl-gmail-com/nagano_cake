@@ -11,7 +11,8 @@ class Admin::OrdersController < ApplicationController
     #showで更新後、注文履歴詳細(show)に遷移する
     @order = Order.find(params[:id])
     if @order.update(order_params)#updateのパラメータ
-      redirect_to admin_order_path(@order.id)#admin/orders#show
+      #admin/orders#show
+      redirect_to admin_order_path(@order.id), notice:"ステータスを変更しました"
     else
       render :show
     end

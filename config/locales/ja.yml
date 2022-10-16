@@ -21,6 +21,9 @@ ja:
       customer:
         signed_in: "ログインに成功しました"
         signed_out: "ログアウトに成功しました"
+      admin:
+        signed_in: "管理者ログインに成功しました"
+        signed_out: "管理者ログアウトに成功しました"
     registrations:
       customer:
         signed_up: "サインインに成功しました"
@@ -37,3 +40,4 @@ ja:
               blank: "が空欄です"
             password:
               blank: "が空欄です"
+              

@@ -14,7 +14,8 @@ protected
     # 【処理内容3】 「1」と「2」の処理が真(true)+そのアカウントのis_deletedカラムに格納されている値が
     #   trueなら退会済→サインアップ画面に遷移、falseなら未退会→そのままcreateアクションを実行
       if (@customer.is_deleted == true)
-          redirect_to new_customer_registration_path#public/registrations#new(顧客ログイン画面)
+        #public/registrations#new(顧客ログイン画面)
+        redirect_to new_customer_registration_path, notice:"退会済みのアカウントです。新規登録をしてください。"
       end
     end
   end
