@@ -6,6 +6,7 @@ class Public::OrdersController < ApplicationController
   def new#注文情報入力
     @new_public_order = Order.new
     @customer = current_customer
+    @addresses = current_customer.addresses
   end
 
   def complete#注文確定(サンクス)
@@ -40,7 +41,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @index_public_order = current_customer.orders.all#Order.all
+    @index_public_order = current_customer.orders.all
     
   end
 

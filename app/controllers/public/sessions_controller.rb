@@ -19,15 +19,14 @@ protected
     end
   end
 
+  #ログイン後に表示する画面
+  def after_sign_in_path_for(resource)
+      top_path#public/homes#top
+  end
+
+  #ログアウト後に表示する画面
+  def after_sign_out_path_for(resource)
+      top_path#public/homes#top
+  end
+
 end
-
-  # def new
-  #   super
-  # end
-
-  # def create
-  # end
-
-  # def destroy
-  # end
-

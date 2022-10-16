@@ -22,7 +22,7 @@
           <!--.strftime("%Y-%m-%d %H:%M:%S")→UTCを消して時刻のフォーマットに変更する-->
           <td width="500">〒<%= order.postal_code %><%= order.address %><br><%= order.name %></td><!--郵便番号、住所、氏名-->
 
-          <td width="200">
+          <td width="400">
           <% order.order_details.each do |order_detail| %>
             <%#= image_tag order.item.get_image %><%= order_detail.item.name %><!--注文商品--><br>
           <% end %>

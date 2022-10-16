@@ -17,6 +17,7 @@ class Public::CustomersController < ApplicationController
     #そちらで使用されている@edit~と合わせる必要があり、結果的に↑と同じ変数名になる
     @edit_public_customer = current_customer
     if @edit_public_customer.update(customers_information_params)#updateのパラメータ
+      flash[:success] = "会員情報を更新しました"
       redirect_to customers_my_page_path#show
     else
       render :edit

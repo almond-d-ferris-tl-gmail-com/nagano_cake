@@ -1,5 +1,6 @@
 <!--<h1>Admin::Items#edit</h1>-->
-<h1><span style="background-color:lightgray">　商品編集　</span></h1>
+<br>
+<h1><span style="background-color:lightgray" class="m-5">　商品編集　</span></h1>
 <br>
 <%= form_with model: @edit_admin_item, url: admin_item_path(@edit_admin_item.id) do |f| %><!--url(遷移先):update-->
 
@@ -14,7 +15,7 @@
   </tr>
   <tr>
     <td height="80">商品説明</td>
-    <td><%= f.text_area :introduction %></td>
+    <td><%= f.text_area :introduction, size: "50" %></td>
   </tr>
   <tr>
     <td height="50">ジャンル</td>
@@ -40,3 +41,4 @@
   </tr>
 </table>
 <% end %>
+<br>

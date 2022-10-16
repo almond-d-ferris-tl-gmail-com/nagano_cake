@@ -12,11 +12,13 @@ class Order < ApplicationRecord
   has_many :order_details, dependent: :destroy
 
   #payment_method(支払い方法)カラム
-  #0:credit_card(クレジットカード)、1:transfer(銀行振込)
+  #/nagano_cake/config/locales/ja.yml
+  #クレジットカード: 0、銀行振込: 1
   enum payment_method: { credit_card: 0, transfer: 1 }
 
-  #受注ステータス
-  enum status: { 入金待ち: 0, 入金確認: 1, 製作中: 2, 発送準備中: 3, 発送済み: 4}
+  #/nagano_cake/config/locales/ja.yml
+  #受注ステータス(入金待ち: 0, 入金確認: 1, 製作中: 2, 発送準備中: 3, 発送済み: 4)
+  enum status: { waiting: 0, confirming: 1, making: 2, preparing: 3, sent: 4}
   
   def subtotal_price#小計の計算　.to_i→整数に変換して小数点を切り捨てる
       (item.tax_included_price * amount).to_i

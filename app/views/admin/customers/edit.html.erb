@@ -1,16 +1,15 @@
 <!--<h1>Admin::Customers#edit</h1>-->
-
-<h1><span style="background-color:lightgray">　<%= @edit_admin_customer.last_name %><%= @edit_admin_customer.first_name %>さんの会員情報編集　</span></h1>
 <br>
+<h1><span style="background-color:lightgray" class="m-5">　<%= @edit_admin_customer.last_name %><%= @edit_admin_customer.first_name %>さんの会員情報編集　</span></h1>
+<br>
+    <%= form_with model: @edit_admin_customer, url: admin_customer_path(@edit_admin_customer.id) do |f| %><!--url(遷移先):update-->
+
       <table border="0" class="mx-auto">
         <tr>
-          <!--form_with(f)にするとエラーになる→変更しないから-->
           <td height="50" width="200">会員ID</td>
           <td><%= @edit_admin_customer.id %></td>
         </tr>
-        
-    <%= form_with model: @edit_admin_customer, url: admin_customer_path(@edit_admin_customer.id) do |f| %><!--url(遷移先):update-->
-        
+
         <tr>
           <td height="50"><%= f.label :"氏名" %></td>
           <!--autofocus: true：カーソルが移動して入力状態になる→htmlに１つだけ設定できる-->
@@ -35,7 +34,7 @@
 
         <tr>
           <td height="50"><%= f.label :"住所" %></td>
-          <td><%= f.text_field :address, autocomplete: "address" %></td>
+          <td colspan="2"><%= f.text_area :address, autocomplete: "address", size: "50" %></td>
         </tr>
 
         <tr>
@@ -63,5 +62,5 @@
           <td><%= f.submit "変更を保存", class: "btn btn-success" %></td>
         </tr>
       </table>
-<br>
 <% end %>
+<br>

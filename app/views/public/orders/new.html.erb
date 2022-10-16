@@ -57,8 +57,8 @@
       </tr>
       
       <tr>
-        <td colspan="2">
-            　　　　<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+        <td colspan="2"><!--プルダウン-->
+            　　　　<%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :address_display) %>
         </td>
       </tr>
       

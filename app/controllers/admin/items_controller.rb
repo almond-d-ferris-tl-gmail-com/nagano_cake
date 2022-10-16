@@ -1,4 +1,8 @@
 class Admin::ItemsController < ApplicationController
+  # ログインしていない場合、ヘッダーのボタンをクリックしたら強制的にログイン画面に移動する
+  # except→ログイン画面への遷移を除外する→今回は除外するものがない
+  before_action :authenticate_admin!
+
   def index#商品一覧
     #ページネーション
     #@index_admin_item = Item.page(params[:page])
@@ -13,10 +17,11 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
-    #newで新規登録後、商品一覧ページ(indexのパス)に遷移する
+    #newで新規登録後、商品編集ページ(edit)に遷移する
     @new_admin_item = Item.new(admin_item_params)#updateのパラメータ
     if @new_admin_item.save
-      redirect_to admin_items_path#indexのパス
+      flash[:notice] ="商品新規登録が完了しました"
+      redirect_to admin_item_path(@new_admin_item)#(admin/items#show)
     else
       render :new
     end

@@ -2,23 +2,30 @@
 <br>
 <h1><span style="background-color:lightgray" class="m-5">　注文履歴詳細　</span></h1>
 <br>
+
 <div class="container">
   <div class="row">
     <div class="col-9"><!--左側-->
     <table border="1">
+      
       <h3>注文情報</h3>
       <tr height="50">
         <td bgcolor="lightgray" width="150"><b>注文日</b></td>
-        <td width="800"><%= @show_public_order.created_at %></td>
+        <td width="800"><%= @show_public_order.created_at.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M:%S") %></td>
+        <!--.in_time_zone('Tokyo')→UTC(協定世界時刻のデフォルト値)をJST(日本時間)に換算する-->
+        <!--.strftime("%Y-%m-%d %H:%M:%S")→UTCを消して時刻のフォーマットに変更する-->
       </tr>
+      
       <tr height="50">
         <td bgcolor="lightgray"><b>配送先</b></td>
         <td>〒<%= @show_public_order.postal_code %><%= @show_public_order.address %><br><%= @show_public_order.name %></td>
       </tr>
+      
       <tr height="50">
         <td bgcolor="lightgray"><b>支払方法</b></td>
         <td><%= @show_public_order.payment_method_i18n %></td><!--i18n→日本語に変換する-->
-      </tr>      
+      </tr>
+      
       <tr height="50">
         <td bgcolor="lightgray"><b>ステータス</b></td>
         <td><%= @show_public_order.status %></td>
@@ -28,15 +35,18 @@
 
     <div class="col-3"><!--右側-->
       <table border="1">
+        
         <h3>請求情報</h3>
           <tr height="50">
             <td bgcolor="lightgray" width="150"><b>商品合計</b></td>
             <td><%= @show_public_order.total_payment.to_s(:delimited) %></td>
           </tr>
+          
           <tr height="50">
             <td bgcolor="lightgray"><b>配送料</b></td>
             <td width="150"><%= @show_public_order.shipping_cost %></td>
           </tr>
+          
           <tr height="50">
             <td bgcolor="lightgray"><b>ご請求額</b></td>
             <td><%= (@show_public_order.total_payment + @show_public_order.shipping_cost).to_s(:delimited) %></td>

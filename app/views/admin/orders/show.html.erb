@@ -1,5 +1,6 @@
 <!--<h1>Admin::Orders#show</h1>-->
-<h1><span style="background-color:lightgray">　注文履歴詳細　</span></h1>
+<br>
+<h1><span style="background-color:lightgray" class="m-5">　注文履歴詳細　</span></h1>
 <br>
   <table border="0" class="mx-auto">
     <tr>
@@ -14,8 +15,8 @@
     </tr>
     <tr>
       <td height="50">配送先</td>
-      <td>
-          <%= @order.postal_code %><%= @order.address %><br>
+      <td colspan="2">
+          〒<%= @order.postal_code %>　<%= @order.address %><br>
           <%= @order.name %>
       </td>
     </tr>
@@ -25,19 +26,24 @@
     </tr>
     <tr>
       <td height="50">注文ステータス</td><!--プルダウン-->
-      <td><%= @order.status %></td><!--path(遷移先):admin/orders#update-->
-      
-      <td><%= link_to '更新', admin_order_path, class: "btn btn-success" %></td>
+      <td>
+        <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
+         <%= f.select :status, Order.statuses_i18n.invert, {} %>
+      </td>
+      <td><%= f.submit '更新', class: "btn btn-success" %></td>
+        <% end %>
     </tr>
   </table>
+  
 <br><br>
+
 <div class="container">
   <div class="row">
     <div class="col-9"><!--左側-->
     <table class="table">
       <thead>
         <tr bgcolor="lightgray" height="50">
-          <th width="400">商品名</th>
+          <th width="1000">商品名</th>
           <th width="200">単価(税込)</th>
           <th width="150">数量</th>
           <th width="200">小計</th>
@@ -57,8 +63,12 @@
           <!--小計-->
             <td><%= order.subtotal_price.to_s(:delimited) %></td>
           <!--製作ステータス-->
-            <td><%= order.making_status %><!--path(遷移先):admin/orders#update-->
-                <%= link_to '更新', admin_order_path, class: "btn btn-success" %></td>
+            <td><!--path(遷移先):admin/orders#update-->
+              <%= form_with model: order, url: admin_order_path(order.id), method: :patch do |f| %>
+                <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert, {} %>
+                <%= f.submit '更新', class: "btn btn-success" %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>
@@ -84,4 +94,3 @@
   </div><!--row-->
 </div><!--container-->
 <br>
-<!---->

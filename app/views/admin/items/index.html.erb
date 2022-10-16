@@ -1,5 +1,15 @@
 <!--<h1>Admin::Items#index</h1>-->
-<h1><span style="background-color:lightgray">　商品一覧　</span></h1>
+<br>
+<table style="display:flex; justify-content:center">
+  <tr>
+    <th width="400"><h1><span style="background-color:lightgray" class="m-5">　商品一覧　</span></h1></th>
+    <th width="150"></th>
+    <th width="150"></th>
+    <th width="150"></th>
+    <th width="150"><%= link_to "商品新規登録", new_admin_item_path, class: "btn btn-success" %></th><!--path:admin/items#new-->
+  </tr>
+
+</table>
 <br>
 <table style="display:flex; justify-content:center">
   <tr bgcolor="lightgray" height="50">
@@ -29,3 +39,4 @@
 <!--ページネーション-->
 <!--https://getbootstrap.jp/→ドキュメント→検索-->
 <div class="d-flex justify-content-center"><%= paginate @page %></div>
+<br>
