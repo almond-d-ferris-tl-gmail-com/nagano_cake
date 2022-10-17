@@ -16,7 +16,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 #管理者
   namespace :admin do
-    patch 'order_details/update'
+    resources :order_details, only: [:update]
 
     resources :orders, only: [:show, :update]
 

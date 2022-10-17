@@ -5,14 +5,21 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @item = Item.find(params[:id])
+    @order_details = @order.order_details
   end
 
   def update
-    #showで更新後、注文履歴詳細(show)に遷移する
     @order = Order.find(params[:id])
+    @order_details = @order.order_details
     if @order.update(order_params)#updateのパラメータ
-      #admin/orders#show
-      redirect_to admin_order_path(@order.id), notice:"ステータスを変更しました"
+      if @order.status == "confirming"#入金確認
+        @order_details.each do |order_detail|
+          order_detail.update(making_status: 1)
+        end
+        #admin/orders#show
+        redirect_to admin_order_path(@order.id), notice:"ステータスを変更しました"
+      end
     else
       render :show
     end
@@ -21,6 +28,6 @@ class Admin::OrdersController < ApplicationController
   private
   def order_params#注文ステータス変更、製作ステータス変更
   #permitメソッド:paramsで取得したパラメーターに対し保存の許可を行う
-    params.require(:order).permit(:status, :making_status)
+    params.require(:order).permit(:status)
   end
 end

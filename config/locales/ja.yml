@@ -12,9 +12,9 @@ ja:
         sent: "発送済み"
     order_detail:
       making_status:
-        not_making: "製作不可"
+        ban_making: "製作不可"
         waiting: "製作待ち"
-        maling: "製作中"
+        making: "製作中"
         made: "製作完了"
   devise:
     sessions:
