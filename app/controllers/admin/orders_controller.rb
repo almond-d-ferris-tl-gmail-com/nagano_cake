@@ -12,17 +12,21 @@ class Admin::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     @order_details = @order.order_details
-    if @order.update(order_params)#updateのパラメータ
-      if @order.status == "confirming"#入金確認
+    @order.update(order_params)#updateのパラメータ
+    # 注文ステータスを「入金待ち」にする→製作ステータスが全て「製作不可」に更新される
+    if @order.status == "waiting"#入金待ち
         @order_details.each do |order_detail|
-          order_detail.update(making_status: 1)
+          order_detail.update(making_status: 0)#製作不可
         end
-        #admin/orders#show
-        redirect_to admin_order_path(@order.id), notice:"ステータスを変更しました"
-      end
-    else
-      render :show
+    # 注文ステータスを「入金確認」にする→製作ステータスが全て「製作待ち」に更新される
+    elsif @order.status == "confirming"#入金確認
+        @order_details.each do |order_detail|
+          order_detail.update(making_status: 1)#製作待ち
+        end
+    # 注文ステータスを「発送済み」にする→注文ステータスが「発送済み」に更新される
+    #elsif @order.status == "sent"#発送済み
     end
+    redirect_to admin_order_path(@order.id), notice: "ステータスを変更しました"#admin/orders#show
   end
   
   private

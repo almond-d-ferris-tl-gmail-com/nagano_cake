@@ -1,5 +1,6 @@
 <!--<h1>Admin::Orders#show</h1>-->
 <br>
+<%= notice %>
 <h1><span style="background-color:lightgray" class="m-5">　注文履歴詳細　</span></h1>
 <br>
   <table border="0" class="mx-auto">
@@ -30,9 +31,10 @@
           <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch, local: true do |f| %>
             <%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
             <!--ブラウザには日本語で表示→英語でデータを渡すために、再度英語に変換する-->
-      </td>
-      <td><%= f.submit "更新" , class: "btn btn-success" %></td>
+          <%= f.submit "更新" , class: "btn btn-success" %>
           <% end %>
+      </td>
+          
     </tr>
   </table>
   

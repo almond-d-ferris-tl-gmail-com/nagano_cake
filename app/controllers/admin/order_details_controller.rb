@@ -5,11 +5,18 @@ class Admin::OrderDetailsController < ApplicationController
 
   def update
     @order_detail = OrderDetail.find(params[:id])
-    if params[:order_detail][:making_status] == "making"
-      @order_detail.order.update(status: "making")
-    end
+    @order = @order_detail.order
     @order_detail.update(order_detail_params)
-    redirect_to admin_order_path(@order_detail.order.id), notice:"ステータスを変更しました"
+    #@order_details = @order.order_details
+    # 製作ステータスを1つ「製作中」にする→注文ステータスが「製作中」に更新される
+    if params[:order_detail][:making_status] == "making"#製作中
+      @order_detail.order.update(status: "making")#製作中
+    # 製作ステータスを全て「製作完了」にする→注文ステータスが「発送準備中」に更新される
+    #(左)注文ステータス:orderのorder_details(n)の数が(右)製作ステータス:orderのorder_details(n)の製作完了した数と同じか判定
+    elsif @order.order_details.count == @order.order_details.where(making_status: "made").count#製作完了
+      @order_detail.order.update(status: "preparing")#発送準備中
+    end
+    redirect_to admin_order_path(@order_detail.order.id), notice: "ステータスを変更しました"#admin/orders#show
   end
   
   private
