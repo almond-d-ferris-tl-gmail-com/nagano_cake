@@ -14,6 +14,6 @@
     end
     
     def after_sign_up_path_for(resource)
-      top_path#サインアップ・ログインしたらcustomerのtop画面に遷移する
+      customers_my_page_path#サインアップ・ログインしたらpublic/customers#showに遷移する
     end
   end
