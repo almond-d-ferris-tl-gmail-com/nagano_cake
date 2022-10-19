@@ -21,6 +21,11 @@ DMM WEBCAMPコンテンツ【システム設計】 DMM WEBCAMPの学習コンテ
 - 支払方法はクレジットカード、銀行振込から選択できる。
 
 ## ◆用語の定義
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
+
  | 用語 | 意味 | <!--head-->
  | ---- | ----- | 
  | 顧客 | ながのCAKEの商品を購入する人（客） | <!--body-->
