@@ -1,5 +1,6 @@
 <!--セル結合:colspan=""(列の長さ)、rowspan=""(行の長さ)-->
 <!--# →見出し、- →リスト、1. →番号付きリスト、^ →縦結合、> →横結合-->
+<!--Read.meの表を組むためにターミナルで「gem install github-markdown」を入力する-->
 DMM WEBCAMPコンテンツ【システム設計】 DMM WEBCAMPの学習コンテンツ[システム設計]の研修課題。
 
 # ながのCAKE
@@ -33,7 +34,6 @@ DMM WEBCAMPコンテンツ【システム設計】 DMM WEBCAMPの学習コンテ
 |ジャンル|商品の種類。<br>現状、<b>ケーキ</b>、<b>プリン</b>、<b>焼き菓子</b>、<b>キャンディ</b>の4ジャンルある。|
 |注文個数|1回の注文に紐付く注文個数の合計。<br>例）商品Aを3個、商品Bを2個注文→注文個数は5。|
 |商品小計|商品単価（税込）×個数<br>例）1,200円（税込）の商品を2個購入＝商品小計は2,400円|
-<!---->
 
 ## ◆各種ステータス
 |ステータス名|用途|ステータス|設定タイミング|<!--head-->
@@ -157,3 +157,36 @@ DMM WEBCAMPコンテンツ【システム設計】 DMM WEBCAMPの学習コンテ
    入金が確認できたら注文ステータスを変更し、製作が終了しましたら製作ステータスを変更してください。
    （それぞれ連動して変更が反映されます）
 1. 顧客一覧から顧客詳細の確認・変更等が可能です。
+
+## ◆開発環境
+- cloud9
+
+### 使用言語
+- Ruby 3.1.2
+- HTML
+- CSS
+- SCSS
+- JavaScript
+
+### フレームワーク、データベース、その他
+- Ruby on Rails 6.1.7
+- SQlite3 1.4
+- puma 5.0
+- sass-rails 6
+- webpacker 5.0
+- turbolinks 5
+- jbuilder 2.7
+- redis 4.0
+- bcrypt 3.1.7
+- image_processing 1.2
+- bootsnap 1.4.4
+
+### Gem
+- devise
+- net-smtp
+- kaminari 1.2.1
+- enum_help
+- pry-byebug
+
+## ◆作成者(アカウント名)
+- M-H(almond-d-ferris-tl-gmail-com)
