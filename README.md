@@ -1,6 +1,7 @@
 <!--セル結合:colspan=""(列の長さ)、rowspan=""(行の長さ)-->
 <!--# →見出し、- →リスト、1. →番号付きリスト、^ →縦結合、> →横結合-->
-<!--Read.meの表を組むためにターミナルで「gem install github-markdown」を入力する-->
+<!--Read.meの表を組むためにターミナルで「gem install github-markdown」を入力する→実は不要？-->
+<!--表の内容はコピペだとうまくいかない→先に枠組みを作ってそこに直接入力する-->
 DMM WEBCAMPコンテンツ【システム設計】 DMM WEBCAMPの学習コンテンツ[システム設計]の研修課題。
 
 # ながのCAKE
@@ -21,21 +22,19 @@ DMM WEBCAMPコンテンツ【システム設計】 DMM WEBCAMPの学習コンテ
 - 支払方法はクレジットカード、銀行振込から選択できる。
 
 ## ◆用語の定義
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
-
 | 用語  | 意味 |
 | ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| 顧客  | Content Cell  |
+| 会員  | Content Cell  |
+| ECサイト  | Content Cell  |
+| 管理サイト  | Content Cell  |
+| 注文ステータス  | Content Cell  |
+| 製作ステータス  | Content Cell  |
+| 販売ステータス  | Content Cell  |
+| 会員ステータス  | Content Cell  |
+| ジャンル  | Content Cell  |
+| 注文個数  | Content Cell  |
+| 商品小計  | Content Cell  |
 
  | 用語 | 意味 | <!--head-->
  | ---- | ----- | 
@@ -52,6 +51,12 @@ DMM WEBCAMPコンテンツ【システム設計】 DMM WEBCAMPの学習コンテ
  | 商品小計 | 商品単価（税込）×個数<br>例）1,200円（税込）の商品を2個購入＝商品小計は2,400円 | 
 
 ## ◆各種ステータス
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
+
+
  | ステータス名 | 用途 | ステータス | 設定タイミング | <!--head-->
  | ---- | ----- | 
  | 注文ステータス | 注文状況を表す。<br>会員の購入履歴にも表示する。 | 入金待ち | 注文した時点でデフォルトで設定される | <!--body-->
