@@ -41,14 +41,14 @@ DMM WEBCAMPコンテンツ【システム設計】 DMM WEBCAMPの学習コンテ
 ## ◆各種ステータス
 <table>
   <tr>
-    <th>ステータス名</th>
+    <th>ｽﾃｰﾀｽ名</th>
     <th>用途</th>
-    <th>ステータス</th>
+    <th>ｽﾃｰﾀｽ</th>
     <th>設定タイミング</th>
   </tr>
   <tr>
     <td rowspan=5>注文ステータス</td>
-    <td rowspan=5>注文状況を表す<br>会員の購入履歴<br>にも表示する</td>
+    <td rowspan=5>注文状況を表す<br>会員の購入履歴にも表示する</td>
     <td>入金待ち</td>
     <td>注文した時点でデフォルトで設定される</td>
   </tr>
@@ -70,7 +70,7 @@ DMM WEBCAMPコンテンツ【システム設計】 DMM WEBCAMPの学習コンテ
   </tr>
   <tr>
     <td rowspan=4>製作ステータス</td>
-    <td rowspan=4>各商品の製作<br>状況を表す<br>内部でのみ使用<br>する</td>
+    <td rowspan=4>各商品の製作状況を表す<br>内部でのみ使用する</td>
     <td>製作不可</td>
     <td>注文を受けた時点でデフォルトで設定される</td>
   </tr>
@@ -229,4 +229,4 @@ DMM WEBCAMPコンテンツ【システム設計】 DMM WEBCAMPの学習コンテ
 - pry-byebug
 
 ## ◆作成者(アカウント名)
-- M-H(almond-d-ferris-tl-gmail-com)
+M-H(almond-d-ferris-tl-gmail-com)
